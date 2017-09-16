@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="10">
+    <Appenders>
+        <Console name="Human">
+            <PatternLayout pattern="%d %p %C{1}.%M %m %X %ex%n"/>
+        </Console>
+        <Console name="Human2">
+            <JSONLayout complete="false" compact="false" eventEol="true" properties="true"/>
+        </Console>
+        <Console name="Json">
+            <JSONLayout complete="false" compact="true" eventEol="true" properties="true" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com" level="${env:LOG_LEVEL:-DEBUG}" additivity="false">
+            <AppenderRef ref="${env:LOG_APPENDER:-Human}"/>
+        </Logger>
+        <Root level="DEBUG">
+            <AppenderRef ref="Human"/>
+        </Root>
+    </Loggers>
+    
+</Configuration>
